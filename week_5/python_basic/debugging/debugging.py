@@ -17,7 +17,7 @@ def f3():
     index = 1
     while index < 6:
         print(index)
-        index += 1  # Important: Increment to avoid an infinite loop
+        index += 1
 
     f4()
     return
