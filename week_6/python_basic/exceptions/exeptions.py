@@ -57,13 +57,13 @@
 #                 raise
 
 # 7
-def count_errors(funcs):
-    count = 0
-    for f in funcs:
-        try:
-            f()
-        except Exception:
-            count += 1
-    return count
-my_functions = [lambda: 1, lambda: 1/0, lambda: int("x"), lambda: 2]
-print(count_errors(my_functions))
+# def count_errors(funcs):
+#     count = 0
+#     for f in funcs:
+#         try:
+#             f()
+#         except Exception:
+#             count += 1
+#     return count
+# my_functions = [lambda: 1, lambda: 1/0, lambda: int("x"), lambda: 2]
+# print(count_errors(my_functions))
