@@ -1,0 +1,4 @@
+1 |PENDING|ללמוד Python Files
+2 |DONE|לכתוב תרגיל 1
+3 |PENDING| לסיים את הפרוייקט
+
