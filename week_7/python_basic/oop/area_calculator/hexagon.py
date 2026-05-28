@@ -1,4 +1,4 @@
-from calculator import Shape
+from shape import Shape
 from math import sqrt
 
 class Hexagon(Shape):

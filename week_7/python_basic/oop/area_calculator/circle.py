@@ -1,4 +1,4 @@
-from calculator import Shape
+from shape import Shape
 from math import pi
 class Circle(Shape):
     def __init__(self,radius):
