@@ -30,7 +30,7 @@ class ShapeManager:
                     elif s_type == "triangle":
                         self.shapes.append(Triangle(s_id, item.get("height"), item.get("base"), item.get("side_a"), item.get("side_b"), item.get("side_c")))
                     elif s_type == "hexagon":
-                        self.shapes.append(Hexagon(item.get("side")))
+                        self.shapes.append(Hexagon(s_id, item.get("side")))
         except Exception:
             pass
 
