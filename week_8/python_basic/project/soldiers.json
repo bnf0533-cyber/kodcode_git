@@ -1,0 +1,30 @@
+[
+  {
+    "id": 10,
+    "full_name": "davis",
+    "rank": "rav_aluf",
+    "role": "major",
+    "unit": "8200",
+    "status": "active",
+    "additionalProp1": {}
+  },
+  {
+    "id": 20,
+    "full_name": "shalom",
+    "rank": "turay",
+    "role": "commander",
+    "unit": "8200",
+    "status": "active"
+  },
+  {
+    "id": 30,
+    "full_name": "shay",
+    "rank": "rav_pakad",
+    "role": "commander",
+    "unit": "8200",
+    "status": "active"
+  },
+  {
+    "additionalProp1": {}
+  }
+]
