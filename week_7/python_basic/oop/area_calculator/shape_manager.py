@@ -49,6 +49,7 @@ class ShapeManager:
         for shape in self.shapes:
             if shape.id == shape_id:
                 for key, value in new_data.items():
+                    shape.check_numbers(value)
                     setattr(shape, key, value)
                 self.save_to_json()
                 return True
