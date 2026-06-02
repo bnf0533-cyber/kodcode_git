@@ -23,8 +23,5 @@
     "role": "commander",
     "unit": "8200",
     "status": "active"
-  },
-  {
-    "additionalProp1": {}
   }
 ]
