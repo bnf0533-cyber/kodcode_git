@@ -1,0 +1,7 @@
+from fastapi import APIRouter
+
+router = APIRouter(prefix="/users", tags=["users"])
+
+@router.get("/")
+def getAll():
+    return {"messag" : "momo"}
