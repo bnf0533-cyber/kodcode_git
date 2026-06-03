@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI , HTTPException
 from logger_config import logger
 from utils.io import read_info,write_info
 
@@ -21,7 +21,7 @@ def get_by_id(id : int):
             return sol
     else:
         logger.warning("serch by id not sseccest : soldier not found.")
-        return "error: 404 soldier not found."
+        raise HTTPException(status_code=404, detail="Soldier not found")
 
 
 @app.post("/soldiers",status_code=201)
@@ -39,7 +39,9 @@ def updat(id :int,body :dict):
             sol.update(body)
             logger.info(f"The details of {id} have been changed successfully.")
             write_info(data)
-
+            return {f"The soldier {id} was perfectly prepared."}
+    else:
+        raise HTTPException(status_code=404, detail="Soldier not found")
 
 @app.delete("/soldiers/{id}",status_code=200)
 def delete_soldier(id : int):
@@ -49,6 +51,9 @@ def delete_soldier(id : int):
             data.remove(sol)
             logger.info(f"Soldier {id} was successfully deleted from the system.")
             write_info(data)
+            return(f"Soldier {id} was deleted from the system.")
+    else:
+        raise HTTPException(status_code=404, detail="Soldier not found")
 
 if __name__ == "__main__":
     import uvicorn
