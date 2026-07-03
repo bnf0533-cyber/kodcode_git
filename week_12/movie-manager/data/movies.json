@@ -1,0 +1,16 @@
+[
+  {
+    "id": 2,
+    "title": "Titanic",
+    "genre": "Romance",
+    "year": 1997,
+    "rating": 9
+  },
+  {
+    "id": 3,
+    "title": "big",
+    "genre": "comedy",
+    "year": 2025,
+    "rating": 9
+  }
+]
