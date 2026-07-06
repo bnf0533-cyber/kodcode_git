@@ -15,12 +15,10 @@
 
 // fetch("https://jsonplaceholder.typicode.com/notfound")
 //     .then((res) => {
-
 //         return res.json() && res.status
 //     })
 //     .then(res => {
 //         console.log(res);
-
 //         if (!res.ok) {
 //             console.log("ok is false");
 //         }
@@ -56,10 +54,10 @@
 
 // 6
 
-fetch("https://jsonplaceholder.typicode.com/posts/")
-.then((res) => {
-    res.json()
-    return res.map(() => res.userid)
-})
-.then(res => {res.name
-})
+// fetch("https://jsonplaceholder.typicode.com/posts/")
+// .then((res) => {
+//     res.json()
+//     return res.map(() => res.userid)
+// })
+// .then(res => {res.name
+// })

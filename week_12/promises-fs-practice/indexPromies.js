@@ -71,13 +71,14 @@ const p3 = fs.readFile("./callbacks-fs-practice/data/message.txt", "utf-8")
 Promise.all([p1, p2, p3])
 	.then(results => {
 		console.log(results);
-
 	})
 	.catch(err => console.log(err));
 Promise.race([p1, p2, p3])
 	.then(results => {
 		console.log(results);
-
 	})
 	.catch(err => console.log(err));
-Promise.allSettled
+Promise.allSettled([p1, p2, p3])
+	.then(result => {
+		console.log(result);
+	})
