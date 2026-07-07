@@ -1,11 +1,11 @@
 {
-  "name": "server",
+  "name": "week_13",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --watch server.js"
+    "start": "node --watch exercises"
   },
   "keywords": [],
   "author": "",

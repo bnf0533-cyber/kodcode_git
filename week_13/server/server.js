@@ -1,4 +1,4 @@
-// import http from "http"
+import http from "http"
 // const server = http.createServer((req , res) => {
 //     console.log(req.url);
 
@@ -67,33 +67,125 @@
 // console.log("server running...")
 // });
 
-import http from "http";
+// import http from "http";
 
-function getUsers(req, res) {
-    res.end(JSON.stringify([{ name: "Moshe", id: 1 }]));
-}
-const users = [{ userName: "momo", id: 0 }, { userName: "nisim", id: 3 }];
-const server = http.createServer((req, res) => {
-    let bodystr = ""
-    req.on("data", (chunk) => {
-        bodystr += chunk.toString()
-    })
-    req.on("end", () => {
-        try {
-            const data = JSON.parse(bodystr)
-            console.log(data);
-            
-        }catch (e){
-            console.error(e);
-            
-        }
-        
-    })
-})
+// function getUsers(req, res) {
+//     res.end(JSON.stringify([{ name: "Moshe", id: 1 }]));
+// }
+// const users = [{ userName: "momo", id: 0 }, { userName: "nisim", id: 3 }];
+// const server = http.createServer((req, res) => {
+//     let bodystr = ""
+//     req.on("data", (chunk) => {
+//         bodystr += chunk.toString()
+//     })
+//     req.on("end", () => {
+//         try {
+//             const data = JSON.parse(bodystr)
+//             console.log(data);
 
+//         }catch (e){
+//             console.error(e);
 
+//         }
+
+//     })
+// })
 
 
-server.listen(3000, () => {
-    console.log("server running...")
-})
+
+
+// server.listen(3000, () => {
+//     console.log("server running...")
+// })
+
+
+// const server = http.createServer((req , res) => {
+// const searchParam = new URL(req.url, "http://localhost").searchParams;
+// if (!searchParam.get("username") || !searchParam.get("age")) {
+//     return res.end("Miss required param")
+// }
+// console.log(searchParam);
+//     res.end("end")
+// })
+// server.listen(3000, () => {
+//     console.log("server running");
+
+// })
+
+
+// const server = http.createServer((req, res) => {
+//     if (req.url.startsWith("/users/") && req.method === "GET") {
+//         const paths = req.url.split("/");
+//         if (paths.length !== 3 ) return req.end("wrong url")
+//         return res.end(JSON.stringify({
+//             username : "momo",
+//             id : paths[2]
+//     }));
+
+
+//     }
+//     res.end("end")
+// })
+// server.listen(3000, () => {
+//     console.log("server running");
+
+// })
+
+
+
+
+
+
+
+
+
+// function checkPathParm(req , pattern , method = "get") {
+//     if (req.url.startsWith("/users/") && req.method === method) {
+//         const paths = req.url.split("/");
+//         if (paths.length !== 3 || isNaN(+paths[2])) return;
+//     }
+// }
+
+// server.on("request", (req, res) => {
+//     if (!req.url.startsWith("/users") || req.method.toLowerCase() !== "get") {
+//         return res.end("something wrong")
+//     } else {
+//         const searchParam = new URL(req.url, "http://localhost").searchParams
+//         if (searchParam.get("username")) {
+//             return res.end(JSON.stringify(searchParam.get("username")) + " you are a beautiful man")
+//         }
+//     }
+// })
+
+// server.listen(3000, () => {
+//     console.log("server running");
+
+// })
+
+
+// const server = http.createServer((req , res) => {
+//     let body = ""
+//     req.on("data" , (chunk) => {
+//         body += chunk.toString()
+//     })
+//     req.on("end" , () => {
+//         console.log("end get all chunks");
+//         if (!req.headers["content-type"].includes("application/json")) return res.end("invalid data")
+//         try {
+//             const data = JSON.parse(body)
+//             res.end(JSON.stringify(data))
+//             console.log(data);
+//     }catch (e) {
+//         console.log(e);
+//     }
+//     })
+//     req.on("error", (e) => {
+//         res.end(e)
+//     })
+//     console.log("endeded");
+    
+// })
+// server.listen(3000 , () => {
+//     console.log("server running...");
+    
+// })
