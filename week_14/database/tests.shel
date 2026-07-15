@@ -1,0 +1,851 @@
+PS C:\Users\bnf05\kodcode_git\week_14> docker ps
+failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.
+PS C:\Users\bnf05\kodcode_git\week_14> docker exec -it mysql mysql -U root -p
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug mysql
+    Learn more at https://docs.docker.com/go/debug-cli/
+failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.
+PS C:\Users\bnf05\kodcode_git\week_14> docker exec -it mysql mysql -U root -p
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug mysql
+    Learn more at https://docs.docker.com/go/debug-cli/
+Error response from daemon: No such container: mysql
+PS C:\Users\bnf05\kodcode_git\week_14> docker exec -it mysql mysql -U root -p
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug mysql
+    Learn more at https://docs.docker.com/go/debug-cli/
+Error response from daemon: No such container: mysql
+PS C:\Users\bnf05\kodcode_git\week_14> docker compose down
+[+] down 1/1
+ ✔ Network week_14_default Removed                                                                                                                                           0.2s
+PS C:\Users\bnf05\kodcode_git\week_14> docker compose up -d
+[+] up 0/1
+ - Network week_14_default Creating                                                                                                                                          0.0s
+[+] up 3/3-07-14T09:11:36+03:00" level=warning msg="Found orphan containers ([week_14-web-1 week_14-app-1]) for this project. If you removed or renamed this service in your comp
+ ✔ Network week_14_default   Created                                                                                                                                         0.0s
+ ✔ Container week_14-mysql-1 Started                                                                                                                                         0.7s
+ ✔ Container week_14-myapp-1 Started                                                                                                                                         0.8s
+PS C:\Users\bnf05\kodcode_git\week_14> docker compose ps
+NAME              IMAGE           COMMAND                  SERVICE   CREATED          STATUS          PORTS
+week_14-myapp-1   week_14-myapp   "docker-entrypoint.s…"   myapp     14 seconds ago   Up 16 seconds   0.0.0.0:3004->3000/tcp, [::]:3004->3000/tcp
+week_14-mysql-1   mysql:8         "docker-entrypoint.s…"   mysql     15 seconds ago   Up 16 seconds   0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp
+PS C:\Users\bnf05\kodcode_git\week_14> docker exec -it mysql  mysql -u root -p             
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug mysql
+    Learn more at https://docs.docker.com/go/debug-cli/
+Error response from daemon: No such container: mysql
+PS C:\Users\bnf05\kodcode_git\week_14> docker ps
+CONTAINER ID   IMAGE           COMMAND                  CREATED              STATUS              PORTS                                         NAMES
+968e542adec2   week_14-myapp   "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:3004->3000/tcp, [::]:3004->3000/tcp   week_14-myapp-1
+be37679b56f0   mysql:8         "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp   week_14-mysql-1
+PS C:\Users\bnf05\kodcode_git\week_14> exec -it week_14-mysql-1  mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.4.10 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> create database example
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| example            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from example
+    -> ;
+ERROR 1046 (3D000): No database selected
+mysql> select * from example
+    -> ;
+ERROR 1046 (3D000): No database selected
+mysql> create table from exampel
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from exampel' at line 1
+mysql> show tables
+    -> ;
+ERROR 1046 (3D000): No database selected
+mysql> show tables from example
+    -> ;
+Empty set (0.01 sec)
+
+mysql> create table users (
+    -> id int primary key auto_increment,
+    -> username varchar(20),
+    -> age int not null
+    -> );
+ERROR 1046 (3D000): No database selected
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| example            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> USE example;
+Database changed
+mysql> -- 1.    (!)
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> USE example;
+Database changed
+mysql> 
+mysql> -- 2.   :
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> CREATE TABLE users (
+    ->     id INT PRIMARY KEY AUTO_INCREMENT,
+    ->     username VARCHAR(20),
+    ->     age INT NOT NULL
+    -> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> show table
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_example |
++-------------------+
+| users             |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> CREATE TABLE users (
+    ->     id INT PRIMARY KEY AUTO_INCREMENT,
+    ->     username VARCHAR(20),
+    ->     age INT NOT NULL
+    -> );
+ERROR 1050 (42S01): Table 'users' already exists
+mysql> DROP TABLE users;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> CREATE TABLE users (
+    ->     id INT PRIMARY KEY AUTO_INCREMENT,
+    ->     username VARCHAR(20),
+    ->     age INT NOT NULL
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> show table
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> show tables
+    -> ;
++-------------------+
+| Tables_in_example |
++-------------------+
+| users             |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO users (username, age) VALUES 
+    -> ('Talya', 23),
+    -> ('Tohar', 5),
+    -> ('Yanai', 2);
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> show tables
+    -> ;
++-------------------+
+| Tables_in_example |
++-------------------+
+| users             |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM users;
++----+----------+-----+
+| id | username | age |
++----+----------+-----+
+|  1 | Talya    |  23 |
+|  2 | Tohar    |   5 |
+|  3 | Yanai    |   2 |
++----+----------+-----+
+3 rows in set (0.00 sec)
+
+mysql> create teble orders {
+    -> id int auto_incremen primary key,
+    -> price int not null,
+    -> name varchar(20) not null,
+    -> customer_id int,
+    -> foreign key(customer_id) references users(id);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'teble orders {
+id int auto_incremen primary key,
+price int not null,
+name varcha' at line 1
+mysql> create teble orders ( id int auto_incremen primary key, price int not null, name varchar(20) not null, customer_id int, foreign key(customer_id) references users(id);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'teble orders ( id int auto_incremen primary key, price int not null, name varcha' at line 1
+mysql> CREATE TABLE orders (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     price INT NOT NULL,
+    ->     name VARCHAR(20) NOT NULL,
+    ->     customer_id INT,
+    ->     FOREIGN KEY(customer_id) REFERENCES users(id)
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select * from orders
+    -> ;
+Empty set (0.00 sec)
+
+mysql> insert into orders (price , name , customer_id)
+    -> values
+    -> (34 , "Laptop", 1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from users;
++----+----------+-----+
+| id | username | age |
++----+----------+-----+
+|  1 | Talya    |  23 |
+|  2 | Tohar    |   5 |
+|  3 | Yanai    |   2 |
++----+----------+-----+
+3 rows in set (0.01 sec)
+
+mysql> select * from orders;
++----+-------+--------+-------------+
+| id | price | name   | customer_id |
++----+-------+--------+-------------+
+|  1 |    34 | Laptop |           1 |
++----+-------+--------+-------------+
+1 row in set (0.00 sec)
+
+mysql> insert into orders (price , name , customer_id) values (34 , "aiphon", 3);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from orders;
++----+-------+--------+-------------+
+| id | price | name   | customer_id |
++----+-------+--------+-------------+
+|  1 |    34 | Laptop |           1 |
+|  2 |    34 | aiphon |           3 |
++----+-------+--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> select user.id ,user.username, orders.price, orfers.name  from users inner join orders on users.id = orders.customer_id;
+ERROR 1054 (42S22): Unknown column 'user.id' in 'field list'
+mysql> SELECT users.id, users.username, orders.price, orders.name 
+    -> FROM users 
+    -> INNER JOIN orders ON users.id = orders.customer_id;
++----+----------+-------+--------+
+| id | username | price | name   |
++----+----------+-------+--------+
+|  1 | Talya    |    34 | Laptop |
+|  3 | Yanai    |    34 | aiphon |
++----+----------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT users.id, users.username, orders.price, orders.name  FROM u  INNER JOIN orders ON users.id = orders.customer_id;
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug week_14-mysql-1
+    Learn more at https://docs.docker.com/go/debug-cli/
+PS C:\Users\bnf05\kodcode_git\week_14> docker exec -it week_14-mysql-1  mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.4.10 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SELECT users.id, users.username, orders.price, orders.name 
+    -> FROM users 
+    -> INNER JOIN orders ON users.id = orders.customer_id;
+ERROR 1046 (3D000): No database selected
+mysql> SELECT users.id, users.username, orders.price, orders.name 
+    -> FROM users 
+    -> INNER JOIN orders ON users.id = orders.customer_id;
+ERROR 1046 (3D000): No database selected
+mysql> USE example;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SELECT users.id, users.username, orders.price, orders.name  
+    -> FROM users  
+    -> INNER JOIN orders ON users.id = orders.customer_id;
++----+----------+-------+--------+
+| id | username | price | name   |
++----+----------+-------+--------+
+|  1 | Talya    |    34 | Laptop |
+|  3 | Yanai    |    34 | aiphon |
++----+----------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT users.id, users.username, orders.price, orders.name  
+    -> FROM users  
+    -> INNER JOIN orders ON users.id = orders.customer_id;
++----+----------+-------+--------+
+| id | username | price | name   |
++----+----------+-------+--------+
+|  1 | Talya    |    34 | Laptop |
+|  3 | Yanai    |    34 | aiphon |
++----+----------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT users.id, users.username, orders.price, orders.name 
+    -> from users u
+    -> left join orders o
+    -> on u.id = o.customer_id;
+ERROR 1054 (42S22): Unknown column 'users.id' in 'field list'
+mysql> SELECT users.id, users.username, orders.price, orders.name 
+    -> FROM users
+    -> LEFT JOIN orders
+    -> ON users.id = orders.customer_id;
++----+----------+-------+--------+
+| id | username | price | name   |
++----+----------+-------+--------+
+|  1 | Talya    |    34 | Laptop |
+|  2 | Tohar    |  NULL | NULL   |
+|  3 | Yanai    |    34 | aiphon |
++----+----------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT users.id, users.username, orders.price, orders.name  FROM users right JOIN orders ON users.id = orders.customer_id;
++------+----------+-------+--------+
+| id   | username | price | name   |
++------+----------+-------+--------+
+|    1 | Talya    |    34 | Laptop |
+|    3 | Yanai    |    34 | aiphon |
++------+----------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT users.id, users.username, orders.price, orders.name 
+    -> FROM users
+    -> LEFT JOIN orders
+    -> ON users.id = order
+    -> 
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order' at line 4
+mysql> mysql> SELECT users.id, users.username, orders.price, orders.name  
+    ->     -> FROM users  
+    ->     -> INNER JOIN orders ON users.id = orders.customer_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mysql> SELECT users.id, users.username, orders.price, orders.name  
+    -> FROM ' at line 1
+mysql> +----+----------+-------+--------+
+    -> | id | username | price | name   |
+    -> +----+----------+-------+--------+
+    -> |  1 | Talya    |    34 | Laptop |
+    -> |  3 | Yanai    |    34 | aiphon |
+    -> +----+----------+-------+--------+
+    -> 2 rows in set (0.00 sec)
+    -> 
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '+----+----------+-------+--------+
+| id | username | price | name   |
++----+----' at line 1
+mysql> mysql> SELECT users.id, users.username, orders.price, orders.name       -> FROM users       -> INNER JOIN orders ON users.id = orders.customer_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mysql> SELECT users.id, users.username, orders.price, orders.name       -> FROM ' at line 1
+mysql> SELECT users.id, users.username, orders.price, orders.name 
+    -> from users
+    -> left join orders
+    -> on users.id = orders.customer.id
+    -> where orders.id is null;
+ERROR 1054 (42S22): Unknown column 'orders.customer.id' in 'on clause'
+mysql> SELECT users.id, users.username, orders.price, orders.name 
+    -> FROM users
+    -> LEFT JOIN orders
+    -> ON users.id = orders.customer_id
+    -> WHERE orders.id IS NULL;
++----+----------+-------+------+
+| id | username | price | name |
++----+----------+-------+------+
+|  2 | Tohar    |  NULL | NULL |
++----+----------+-------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT users.id, users.username, orders.price, orders.name 
+    -> FROM users
+    -> LEFT JOIN orders
+    -> ON users.id = orders.customer_id
+    -> order by orders.price;
++----+----------+-------+--------+
+| id | username | price | name   |
++----+----------+-------+--------+
+|  2 | Tohar    |  NULL | NULL   |
+|  1 | Talya    |    34 | Laptop |
+|  3 | Yanai    |    34 | aiphon |
++----+----------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT users.id, users.username, orders.price, orders.name 
+    -> FROM users
+    -> LEFT JOIN orders
+    -> ON users.id = orders.customer_id
+    -> order by users.username;
++----+----------+-------+--------+
+| id | username | price | name   |
++----+----------+-------+--------+
+|  1 | Talya    |    34 | Laptop |
+|  2 | Tohar    |  NULL | NULL   |
+|  3 | Yanai    |    34 | aiphon |
++----+----------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> create database store
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use store;
+Database changed
+mysql> create table products(
+    -> id int auto_increment primary key,
+    -> name not null,
+    -> price float,
+    -> stock default 0;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not null,
+price float,
+stock default 0' at line 3
+mysql> create table products( id int auto_increment primary key, name varchar(20) not null, price float, stock int default 0);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into products 
+    -> values
+    -> "laptop" , 10 , 2500
+    -> "moshe" , 50 , 45
+    -> "monitor" ,5, 800;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"laptop" , 10 , 2500
+"moshe" , 50 , 45
+"monitor" ,5, 800' at line 3
+mysql> insert into products
+    -> (name , stock, price)
+    -> values
+    -> ("laptop" , 10 , 2500),
+    -> ("mouse" , 50 , 45),
+    -> ()
+    -> ("monitor" , 5 , 800 );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '("monitor" , 5 , 800 )' at line 7
+mysql> insert into products (name , stock, price) values ("laptop" , 10 , 2500), ("mouse" , 50 , 45), ("monitor" , 5 , 800 );
+Query OK, 3 rows affected (0.03 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from product
+    -> ;
+ERROR 1146 (42S02): Table 'store.product' doesn't exist
+mysql> select * from products;
++----+---------+-------+-------+
+| id | name    | price | stock |
++----+---------+-------+-------+
+|  1 | laptop  |  2500 |    10 |
+|  2 | mouse   |    45 |    50 |
+|  3 | monitor |   800 |     5 |
++----+---------+-------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from products
+    -> where price > 100;
++----+---------+-------+-------+
+| id | name    | price | stock |
++----+---------+-------+-------+
+|  1 | laptop  |  2500 |    10 |
+|  3 | monitor |   800 |     5 |
++----+---------+-------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select name,price from products order by price;
++---------+-------+
+| name    | price |
++---------+-------+
+| mouse   |    45 |
+| monitor |   800 |
+| laptop  |  2500 |
++---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> select name,price from products order by price desc;
++---------+-------+
+| name    | price |
++---------+-------+
+| laptop  |  2500 |
+| monitor |   800 |
+| mouse   |    45 |
++---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from products order by price limit 1;
++----+-------+-------+-------+
+| id | name  | price | stock |
++----+-------+-------+-------+
+|  2 | mouse |    45 |    50 |
++----+-------+-------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from products order by price desc limit 1;
++----+--------+-------+-------+
+| id | name   | price | stock |
++----+--------+-------+-------+
+|  1 | laptop |  2500 |    10 |
++----+--------+-------+-------+
+1 row in set (0.00 sec)
+
+mysql> update product set price = 55
+    -> where name = "monitor";
+ERROR 1146 (42S02): Table 'store.product' doesn't exist
+mysql> update products set price = 55 where name = "monitor";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from product;
+ERROR 1146 (42S02): Table 'store.product' doesn't exist
+mysql> select * from products;
++----+---------+-------+-------+
+| id | name    | price | stock |
++----+---------+-------+-------+
+|  1 | laptop  |  2500 |    10 |
+|  2 | mouse   |    45 |    50 |
+|  3 | monitor |    55 |     5 |
++----+---------+-------+-------+
+3 rows in set (0.00 sec)
+
+mysql> update products set += 5
+    -> where name = "monitor";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '+= 5
+where name = "monitor"' at line 1
+mysql> update products set stock +=  5 where name = "monitor";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '+=  5 where name = "monitor"' at line 1
+mysql> update products set stock = stock + 5 where name = "monitor";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> delete from products 
+    -> where stock = 0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into product 
+    -> (name , price , stock)
+    -> values
+    -> ("keybord" , 456 , 0);
+ERROR 1146 (42S02): Table 'store.product' doesn't exist
+mysql> insert into products (name , price , stock) values ("keybord" , 456 , 0);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> delete from products
+    -> where stock = 0;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from products;
++----+---------+-------+-------+
+| id | name    | price | stock |
++----+---------+-------+-------+
+|  1 | laptop  |  2500 |    10 |
+|  2 | mouse   |    45 |    50 |
+|  3 | monitor |    55 |    10 |
++----+---------+-------+-------+
+3 rows in set (0.00 sec)
+
+mysql> create table users (
+    -> id int prinary key,
+    -> name varchar(100) not null,
+    -> city_id int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'prinary key,
+name varchar(100) not null,
+city_id int)' at line 2
+mysql> create table users ( id int primary key, name varchar(100) not null, city_id int);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table orders (
+    -> id int primary key,
+    -> user_id int,
+    -> product varchar(100),
+    -> amount int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table cities (
+    -> id int primary key,
+    -> city varchar(100),
+    -> country varchar(100));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into users
+    -> values
+    -> (1, "Alice", 10),
+    -> (2 , "MacBook", 2500),
+    -> (3, "sarah", 10),
+    -> (4 , "noa" , 12);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> update users set = "David"  where name = "MacBook";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= "David"  where name = "MacBook"' at line 1
+mysql> update users set name = "David" where name = "MacBook";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from users;
++----+-------+---------+
+| id | name  | city_id |
++----+-------+---------+
+|  1 | Alice |      10 |
+|  2 | David |    2500 |
+|  3 | sarah |      10 |
+|  4 | noa   |      12 |
++----+-------+---------+
+4 rows in set (0.00 sec)
+
+mysql> insert into orders values 
+    -> (1,1,"MacBook",2500),
+    -> (2,1,"Phone", 900),
+    -> (3,3,"Table" , 600),
+    -> (4,3,"Keyboard",150);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> insert into cities values (10 . "Tel Aviv","IL"),(11,"Jerusalem","IL"),(12,"Haifa,"IL");
+    "> ;
+    "> 
+    "> 
+    "> 
+    "> ;
+    "> ^C
+mysql> ^C
+mysql> insert into cities values (10 , "Tel Aviv","IL"),(11,"Jerusalem","IL"),(12,"Haifa,"IL");
+    "> \
+    "> ;
+    "> insert into cities values (10 , "Tel Aviv","IL"),(11,"Jerusalem","IL"),(12,"Haifa","IL");
+    "> ;
+    "> insert into cities values (10, "Tel Aviv","IL"),(11,"Jerusalem","IL"),(12,"Haifa","IL");
+    "> ^C
+mysql> insert into cities values (10, "Tel Aviv","IL"),(11,"Jerusalem","IL"),(12,"Haifa","IL");
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from users;
++----+-------+---------+
+| id | name  | city_id |
++----+-------+---------+
+|  1 | Alice |      10 |
+|  2 | David |    2500 |
+|  3 | sarah |      10 |
+|  4 | noa   |      12 |
++----+-------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select * from orsers;
+ERROR 1146 (42S02): Table 'store.orsers' doesn't exist
+mysql> select * from orders;
++----+---------+----------+--------+
+| id | user_id | product  | amount |
++----+---------+----------+--------+
+|  1 |       1 | MacBook  |   2500 |
+|  2 |       1 | Phone    |    900 |
+|  3 |       3 | Table    |    600 |
+|  4 |       3 | Keyboard |    150 |
++----+---------+----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from citise;
+ERROR 1146 (42S02): Table 'store.citise' doesn't exist
+mysql> select * from cities;
++----+-----------+---------+
+| id | city      | country |
++----+-----------+---------+
+| 10 | Tel Aviv  | IL      |
+| 11 | Jerusalem | IL      |
+| 12 | Haifa     | IL      |
++----+-----------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select from u.name , o,product , o.amount
+    -> from users u 
+    -> inner join orders
+    -> on ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from u.name , o,product , o.amount
+from users u
+inner join orders
+on' at line 1
+mysql> select from u.name , o,product , o.amount from users u inner join orders o on u.id = o.user_id ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from u.name , o,product , o.amount from users u inner join orders o on u.id = o.' at line 1
+mysql> select u.name , o,product , o.amount from users u inner join orders o on u.id = o.user_id ;
+ERROR 1054 (42S22): Unknown column 'o' in 'field list'
+mysql> select u.name , o.product , o.amount from users u inner join orders o on u.id = o.user_id ;
++-------+----------+--------+
+| name  | product  | amount |
++-------+----------+--------+
+| Alice | MacBook  |   2500 |
+| Alice | Phone    |    900 |
+| sarah | Table    |    600 |
+| sarah | Keyboard |    150 |
++-------+----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select u.name 
+    -> select u.name;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select u.name' at line 2
+mysql> select u.name from users u inner join orders o on u.id = o.user_id where o.product is null;
+Empty set (0.00 sec)
+
+mysql> select u.name from users u left join orders o on u.id = o.user_id where o.product is null;
++-------+
+| name  |
++-------+
+| David |
+| noa   |
++-------+
+2 rows in set (0.00 sec)
+
+mysql> select u.name o.product  from users u left join orders o on u.id = o.user_id ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.product  from users u left join orders o on u.id = o.user_id' at line 1
+mysql> select u.name o.product  from users u left join orders o on u.id = o.user_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.product  from users u left join orders o on u.id = o.user_id' at line 1
+mysql> select u.name, o.product  from users u left join orders o on u.id = o.user_id;
++-------+----------+
+| name  | product  |
++-------+----------+
+| Alice | Phone    |
+| Alice | MacBook  |
+| David | NULL     |
+| sarah | Keyboard |
+| sarah | Table    |
+| noa   | NULL     |
++-------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select u.name, o.product  from users u left join orders o on u.id = o.user_id group by is null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'is null' at line 1
+mysql> select u.name, o.product  from users u left join orders o on u.id = o.user_id group by o.product is null;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'store.u.name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select u.name, o.product  from users u left join orders o on u.id = o.user_id group by o.product = null;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'store.u.name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select u.name, o.product  from users u left join orders o on u.id = o.user_id group by o.product = null;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'store.u.name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select u.name, o.product  from users u left join orders o on u.id = o.user_id full  group by o.product = null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'full  group by o.product = null' at line 1
+mysql> select u.name, o.product  from users u left join orders o on u.id = o.user_id full  group by o.product;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'full  group by o.product' at line 1
+mysql> select u.name, o.product  from users u left join orders o on u.id = o.user_id  group by o.product;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'store.u.name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select u.name, o.product  from users u left join orders o on u.id = o.user_id group by o.product;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'store.u.name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select u.name, o.product  from users u left join orders o on u.id = o.user_id wehre o.product is null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'wehre o.product is null' at line 1
+mysql> select u.name, o.product  from users u left join orders o on u.id = o.user_id;
++-------+----------+
+| name  | product  |
++-------+----------+
+| Alice | Phone    |
+| Alice | MacBook  |
+| David | NULL     |
+| sarah | Keyboard |
+| sarah | Table    |
+| noa   | NULL     |
++-------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select u.name, o.product from users u left join orders o on u.id = o.user_id;
++-------+----------+
+| name  | product  |
++-------+----------+
+| Alice | Phone    |
+| Alice | MacBook  |
+| David | NULL     |
+| sarah | Keyboard |
+| sarah | Table    |
+| noa   | NULL     |
++-------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select u.name, o.product from users u left join orders o on u.id = o.user_id limit 1;
++-------+---------+
+| name  | product |
++-------+---------+
+| Alice | Phone   |
++-------+---------+
+1 row in set (0.00 sec)
+
+mysql> select u.name, o.product from users u left join orders o on u.id = o.user_id where o.name = o.name;
+ERROR 1054 (42S22): Unknown column 'o.name' in 'where clause'
+mysql> select u.name, o.product from users u left join orders o on u.id = o.user_id where o.name;
+ERROR 1054 (42S22): Unknown column 'o.name' in 'where clause'
+mysql> select u.name, o.product from users u left join orders o on u.id = o.user_id where is null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'is null' at line 1
+mysql> select u.name, o.product from users u left join orders o on u.id = o.user_id where is null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'is null' at line 1
+mysql> select u.name , o.product
+    -> from users u
+    -> left join (
+    -> select user
+    -> -id
+    -> , MIN(id) as first
+    -> _order_id
+    -> from orders 
+    -> group by user_if)
+    -> first_o on u.id = first_o.user_id
+    -> left join orders o on first_o.first_order_id = o.id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '_order_id
+from orders 
+group by user_if)
+first_o on u.id = first_o.user_id
+left ' at line 7
+mysql> SELECT u.name, o.product 
+    -> FROM users u
+    -> LEFT JOIN (
+    ->     SELECT user_id, MIN(id) AS first_order_id 
+    ->     FROM orders 
+    ->     GROUP BY user_id
+    -> ) first_o ON u.id = first_o.user_id
+    -> LEFT JOIN orders o ON first_o.first_order_id = o.id;
++-------+---------+
+| name  | product |
++-------+---------+
+| Alice | MacBook |
+| David | NULL    |
+| sarah | Table   |
+| noa   | NULL    |
++-------+---------+
+4 rows in set (0.01 sec)
+
+mysql> 
+mysql> select u.name from users u left join orders o on u.id = o.user_id where o.product is null;;
++-------+
+| name  |
++-------+
+| David |
+| noa   |
++-------+
+2 rows in set (0.00 sec)
+
+mysql> 
