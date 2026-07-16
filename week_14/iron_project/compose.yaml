@@ -1,0 +1,14 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-iron
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD : true
+      MYSQL_DATABASE: "iron_dome"
+    volumes:
+      - mysql:/var/lib/mysql
+
+volumes:
+  mysql:
