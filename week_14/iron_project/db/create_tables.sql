@@ -1,7 +1,7 @@
 CREATE TABLE if not exists operators (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
-    rank VARCHAR(100)
+    `rank` VARCHAR(100)
 );
 
 CREATE TABLE if not exists incidents (
