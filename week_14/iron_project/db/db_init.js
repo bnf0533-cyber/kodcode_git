@@ -12,7 +12,7 @@ export const createTables = async () => {
             // מנקה מחרוזות ריקות
             .filter(q => q.length > 0)
         for (const query of queries) {
-            await pool.query(query)
+            await pool.execute(query)
         }
         console.log("database tables initialized from sql file successfully.");
     } catch (err) {
