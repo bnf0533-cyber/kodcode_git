@@ -22,5 +22,13 @@ export async function createIncident(codeName, threatLevel, operatorId) {
     } catch (err) {
         console.error(err);
     }
+}
 
+export async function updateIncidentStatus(status, id) {
+    try {
+        const query = await pool.execute("update incidents set status = ? where id = ?", [status, id])
+        return query
+    } catch (err) {
+        console.error(err);
+    }
 }
