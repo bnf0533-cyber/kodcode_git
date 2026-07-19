@@ -1,4 +1,4 @@
-import { createIncidentAndAddToLogs, fetchOpenIncidents } from "../services/incidentsService.js";
+import { createIncidentAndAddToLogs, fetchOpenIncidents,updateStatus } from "../services/incidentsService.js";
 
 export async function getOpenIncidents(req, res) {
     try {
@@ -17,5 +17,17 @@ export async function createNewIncident(req, res) {
     } catch (err) {
         console.error(err);
     }
+}
 
+export async function updateStatusIncident(req , res) {
+    try{
+        const {status , operatorId } = req.body
+        const {id } = req.params
+        const update =  await updateStatus(status , id , operatorId)
+        res.status(200).json({"update" : true , data : update})
+
+    }catch(err) {
+        console.error(err);
+    }
+    
 }
