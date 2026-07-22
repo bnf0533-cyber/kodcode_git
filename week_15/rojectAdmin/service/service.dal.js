@@ -6,6 +6,7 @@ export async function getAllProducts() {
         return getAllProducts;
     } catch (error) {
         console.error(error);
+        throw error;
     }
 }
 
@@ -21,6 +22,7 @@ export async function createProduct(name, category, price, stock, active) {
         return createProduct;
     } catch (error) {
         console.error(error);
+        throw error;
     }
 }
 
@@ -41,6 +43,7 @@ export async function getStats() {
         return stats;
     } catch (error) {
         console.error(error);
+        throw error;
     }
 }
 
@@ -54,5 +57,6 @@ export async function updateProduct(id, amount) {
         return updateProduct;
     } catch (error) {
         console.error(error);
+        throw error;
     }
 }
