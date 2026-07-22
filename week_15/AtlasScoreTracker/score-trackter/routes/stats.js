@@ -19,7 +19,7 @@ router.get("/stats", async (req, res) => {
                                 _id :null,
                                 totalGamePlayer : {$sum :1},
                                 totalPointEver : {$sum : "$points"},
-                                averageLevel : {$avg : "level"}
+                                averageLevel : {$avg : "$level"}
                             }
                         }
                     ]
@@ -29,7 +29,7 @@ router.get("/stats", async (req, res) => {
         res.json(systemStats)
     } catch (error) {
         console.log(error);
-        res.json(error);
+        res.status(500).json({ error: error.message });
     }
 });
 

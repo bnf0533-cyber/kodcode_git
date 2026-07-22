@@ -9,7 +9,7 @@ router.get("/games", async (req, res) => {
         res.json(games);
     } catch (e) {
         console.log(e);
-        res.json(e);
+        res.status(500).json({ error: e.message });
     }
 });
 

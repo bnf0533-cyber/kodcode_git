@@ -10,19 +10,19 @@ router.get("/player/:name", async (req, res) => {
             { $match: { playerName: name } },
             {
                 $facet: {
-                    allScores: [{ $sort: { createAt: -1 } }],
-                    bastPerGame: [
+                    allScores: [{ $sort: { createdAt: -1 } }],
+                    bestPerGame: [
                         {
                             $group: {
                                 _id: "$game",
-                                bast: { $max: "$points" },
+                                best: { $max: "$points" },
                             },
                         },
                         {
                             $project: {
                                 _id: 0,
                                 game: "$_id",
-                                bast: 1,
+                                best: 1,
                             },
                         },
                     ],
@@ -32,7 +32,7 @@ router.get("/player/:name", async (req, res) => {
         res.json(playerDetails);
     } catch (error) {
         console.log(error);
-        res.status(500).json(error);
+        res.status(500).json({ error: error.message });
     }
 });
 

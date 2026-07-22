@@ -19,8 +19,8 @@ router.post("/scores", async (req, res) => {
 
         res.json(createScore);
     } catch (error) {
-        console.log("error");
-        res.status(500).json("server error");
+        console.log("error", error);
+        res.status(500).json({ error: error.message || "server error" });
     }
 });
 

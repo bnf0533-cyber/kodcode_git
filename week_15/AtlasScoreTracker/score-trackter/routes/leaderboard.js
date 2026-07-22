@@ -20,7 +20,7 @@ router.get("/global", async (req, res) => {
         return res.json(globalLeaderboard);
     } catch (error) {
         console.log(error);
-        res.json(error);
+        res.status(500).json({ error: error.message });
     }
 });
 
@@ -42,7 +42,7 @@ router.get("/:game", async (req, res) => {
         return res.json(fullDetails)
     } catch (error) {
         console.log(error);
-        res.json(error);
+        res.status(500).json({ error: error.message });
     }
 });
 
