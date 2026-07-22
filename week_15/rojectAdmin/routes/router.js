@@ -1,19 +1,19 @@
 import express from "express";
 import {
-    createProduct,
-    getAllProducts,
-    getStats,
-    updateProduct,
+    handleCreateProduct,
+    handleGetAllProducts,
+    handleGetStats,
+    handleUpdateProduct,
 } from "../ctrl/controller.js";
 const router = express.Router();
 
-router.get("/products", getAllProducts);
+router.get("/products", handleGetAllProducts);
 
-router.post("/products", createProduct);
+router.post("/products", handleCreateProduct);
 
-router.get("/products/stats", getStats);
+router.get("/products/stats", handleGetStats);
 
-router.patch("/products/:id/stock", updateProduct);
+router.patch("/products/:id/stock", handleUpdateProduct);
 
 
 
