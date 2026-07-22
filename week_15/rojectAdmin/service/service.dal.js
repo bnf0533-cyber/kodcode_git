@@ -1,7 +1,9 @@
+import product from "../models/product.js";
+
 export async function getAllProducts() {
     try {
         const getAllProducts = await product.find({ active: true });
-        res.status(200).json(getAllProducts);
+        return getAllProducts;
     } catch (error) {
         console.error(error);
     }
@@ -37,6 +39,19 @@ export async function getStats() {
             { $sort: { count: -1 } },
         ]);
         return stats;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function updateProduct(id, amount) {
+    try {
+        const updateProduct = await product.findByIdAndUpdate(
+            id,
+            { $inc: { stock: amount } },
+            { new: true }
+        );
+        return updateProduct;
     } catch (error) {
         console.error(error);
     }
