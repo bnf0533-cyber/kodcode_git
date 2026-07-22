@@ -45,14 +45,18 @@ app.get("/products/stats", async (req, res) => {
 });
 
 app.patch("/products/:id/stock", async (req, res) => {
-    const { amount } = req.body;
-    const { id } = req.params;
-    const updateProduct = await product.findByIdAndUpdate(
-        id,
-        { $inc: { stock: amount } },
-        { new: true }
-    );
-    res.json(updateProduct);
+    try {
+        const { amount } = req.body;
+        const { id } = req.params;
+        const updateProduct = await product.findByIdAndUpdate(
+            id,
+            { $inc: { stock: amount } },
+            { new: true }
+        );
+        res.status(200).json(updateProduct);
+    } catch (error) {
+        console.error(error);
+    }
 });
 
 app.listen(process.env.PORT, () => {
