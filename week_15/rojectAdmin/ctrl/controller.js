@@ -12,6 +12,7 @@ export const handleCreateProduct = async (req, res) => {
         res.status(201).json(newProduct);
     } catch (error) {
         console.error(error);
+        res.status(500).json({ error: error.message });
     }
 };
 
@@ -21,6 +22,7 @@ export const handleGetAllProducts = async (req, res) => {
         res.status(200).json(products);
     } catch (error) {
         console.error(error);
+        res.status(500).json({ error: error.message });
     }
 };
 
@@ -30,6 +32,7 @@ export const handleGetStats = async (req, res) => {
         res.status(200).json(stats);
     } catch (error) {
         console.error(error);
+        res.status(500).json({ error: error.message });
     }
 };
 
@@ -41,5 +44,6 @@ export const handleUpdateProduct = async (req, res) => {
         res.status(200).json(updated);
     } catch (error) {
         console.error(error);
+        res.status(500).json({ error: error.message });
     }
 };
