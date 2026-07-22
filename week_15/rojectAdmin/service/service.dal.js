@@ -56,7 +56,7 @@ export async function updateProduct(id, amount) {
         );
         return updateProduct;
     } catch (error) {
-        console.error(error);
+        console.error(error);   
         throw error;
     }
 }
