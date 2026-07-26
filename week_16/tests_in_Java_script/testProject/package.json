@@ -1,0 +1,13 @@
+{
+  "name": "testproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "store-calc.js",
+  "scripts": {
+    "test": "node --test store-calc.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
