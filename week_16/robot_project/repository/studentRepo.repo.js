@@ -10,7 +10,7 @@ export async function createStudent(body) {
             firstName: body.firstName,
             lastName: body.lastName,
             className: body.className,
-            labSessionsIds: []
+            labSessionsIds: [],
         };
         const create = await userCollection.insertOne(newUser);
         return { id: create.insertedId.toString() };
@@ -21,9 +21,16 @@ export async function createStudent(body) {
 
 export async function getStudentById(id) {
     try {
-        const get = await userCollection.findOne({_id : new ObjectId(id)})
-        return get
+        const get = await userCollection.findOne({ _id: new ObjectId(id) });
+        return get;
     } catch (error) {
-        throw error
+        throw error;
     }
+}
+
+export async function pushUserToRegister(studentId, sessionId) {
+    await userCollection.updateOne(
+        { _id:new ObjectId(studentId) },
+        { $push: { labSessionsIds: sessionId } }
+    );
 }
