@@ -7,6 +7,6 @@ try {
     await client
     console.log("database connection to mongodb successfully!");
 } catch (error) {
-    console.log("failed to connect to database");
+    console.log("failed to connect to database" , error);
     
 }

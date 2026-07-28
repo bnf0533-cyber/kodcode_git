@@ -1,6 +1,8 @@
 import dotenv from "dotenv/config"
 import express from "express"
-import "./db/dbConfig.js"
+import "./db/dbConfigMongo.db.js"
+import "./db/dbConfigSupabase.db.js"
+
 const app = express()
 app.use(express.json())
 
