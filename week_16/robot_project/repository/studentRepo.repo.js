@@ -1,4 +1,4 @@
-import { ObjectId } from "bson";
+import { ObjectId } from "mongodb";
 import { client } from "../db/dbConfigMongo.db.js";
 
 const db = client.db("robot_db");
