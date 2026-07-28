@@ -32,3 +32,20 @@ export async function registerStudentToSession(sessionId) {
         throw error;
     }
 }
+
+export async function getSessionById(sessionId) {
+    try {
+        const { data, error } = await client
+        .from("lab_sessions")
+        .select("*")
+        .eq("id", sessionId)
+        .single();
+        if (error) {
+            throw error
+        }
+        return data
+    } catch (error) {
+        throw error
+    }
+    
+}
