@@ -30,7 +30,7 @@ export async function getStudentById(id) {
 
 export async function pushUserToRegister(studentId, sessionId) {
     await userCollection.updateOne(
-        { _id: new ObjectId(studentId) },
-        { $addToSet: { labSessionsIds: sessionId } }
+        { _id:new ObjectId(studentId) },
+        { $push: { labSessionsIds: sessionId } }
     );
 }

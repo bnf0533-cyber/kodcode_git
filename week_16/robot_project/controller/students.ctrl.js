@@ -1,26 +1,19 @@
-import { addStudentService, getStudentService } from "../service/student.service.js";
-import { studentSchema } from "../validator/validation.js";
+import { createStudent, getStudentById } from "../repository/studentRepo.repo.js";
 
-export async function manifestStudent(req, res) {
+export async function manifestStudent(req,res) {
     try {
-        const validation = studentSchema.safeParse(req.body);
-        if (!validation.success) {
-            return res.status(400).json({ error: validation.error.issues });
-        }
-        const addStudent = await addStudentService(validation.data);
+        const body = req.body;
+        const addStudent = await createStudent(body);
         return res.status(201).json(addStudent);
     } catch (error) {
-        return res.status(500).json({ error: "server error" });
+        return res.status(500).json("server error");
     }
 }
 
-export async function resaveStudentById(req, res) {
+export async function resaveStudentById(req,res) {
     try {
         const { userId } = req.params;
-        const catchStudent = await getStudentService(userId);
-        if (!catchStudent) {
-            return res.status(404).json({ message: "Not Found" });
-        }
+        const catchStudent = await getStudentById(userId);
         return res.status(200).json(catchStudent);
     } catch (error) {
         return res.status(404).json({ message: "Not Found" });
