@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv/config";
 
-const client = new MongoClient(process.env.MONGO_URI)
+export const client = new MongoClient(process.env.MONGO_URI)
 
 try {
     await client
