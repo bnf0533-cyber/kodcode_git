@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הדגמה ויזואלית: px לעומת %</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-wrapper">
+        <header class="header">
+            <h1>הדגמה ויזואלית: px (פיקסלים) מול % (אחוזים)</h1>
+            <p>שנה את רוחב "אלמנט ההורה" בעזרת הסרגל וראה כיצד התיבות מגיבות!</p>
+        </header>
+
+        <!-- סרגל שליטה אינטראקטיבי -->
+        <section class="controls-card">
+            <label for="widthSlider" class="slider-label">
+                רוחב אלמנט ההורה (Parent): <span id="parentWidthValue" class="highlight-val">600px</span>
+            </label>
+            <input type="range" id="widthSlider" min="320" max="950" value="600" step="10" class="slider">
+            <div class="preset-buttons">
+                <button onclick="setParentWidth(350)" class="btn">מסך קטן (350px)</button>
+                <button onclick="setParentWidth(600)" class="btn">מסך בינוני (600px)</button>
+                <button onclick="setParentWidth(900)" class="btn">מסך רחב (900px)</button>
+            </div>
+        </section>
+
+        <!-- השטח הוויזואלי -->
+        <main class="demo-stage">
+            <!-- אלמנט ההורה -->
+            <div id="parentBox" class="parent-box" style="width: 600px;">
+                <div class="parent-badge">אלמנט ההורה (Parent Container) | רוחב נוכחי: <span id="currentParentWidthDisplay">600px</span></div>
+
+                <!-- תיבה 1: px קבוע -->
+                <div class="demo-box box-px">
+                    <div class="box-header">
+                        <span class="tag tag-px">px - יחידה קבועה</span>
+                        <code>width: 300px;</code>
+                    </div>
+                    <p class="box-desc">הרוחב שלי נשאר **תמיד 300px**, ללא קשר לגודל ההורה!</p>
+                    <div class="live-measure">רוחב שנמדד בפומי: <strong id="pxMeasured">300px</strong></div>
+                </div>
+
+                <!-- תיבה 2: % יחסי (50%) -->
+                <div class="demo-box box-percent-50">
+                    <div class="box-header">
+                        <span class="tag tag-percent">% - יחידה יחסית</span>
+                        <code>width: 50%;</code>
+                    </div>
+                    <p class="box-desc">אני תופס בדיוק **50% מרוחב ההורה**.</p>
+                    <div class="live-measure">רוחב שנמדד בפועל: <strong id="percent50Measured">300px</strong></div>
+                </div>
+
+                <!-- תיבה 3: % יחסי (80%) -->
+                <div class="demo-box box-percent-80">
+                    <div class="box-header">
+                        <span class="tag tag-percent">% - יחידה יחסית</span>
+                        <code>width: 80%;</code>
+                    </div>
+                    <p class="box-desc">אני תופס בדיוק **80% מרוחב ההורה**.</p>
+                    <div class="live-measure">רוחב שנמדד בפועל: <strong id="percent80Measured">480px</strong></div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const slider = document.getElementById('widthSlider');
+        const parentBox = document.getElementById('parentBox');
+        const parentWidthValue = document.getElementById('parentWidthValue');
+        const currentParentWidthDisplay = document.getElementById('currentParentWidthDisplay');
+
+        const pxMeasured = document.getElementById('pxMeasured');
+        const percent50Measured = document.getElementById('percent50Measured');
+        const percent80Measured = document.getElementById('percent80Measured');
+
+        function updateWidths() {
+            const val = slider.value + 'px';
+            parentBox.style.width = val;
+            parentWidthValue.innerText = val;
+            currentParentWidthDisplay.innerText = val;
+
+            // חישוב המידות בפועל
+            const pxBox = document.querySelector('.box-px');
+            const p50Box = document.querySelector('.box-percent-50');
+            const p80Box = document.querySelector('.box-percent-80');
+
+            pxMeasured.innerText = Math.round(pxBox.getBoundingClientRect().width) + 'px';
+            percent50Measured.innerText = Math.round(p50Box.getBoundingClientRect().width) + 'px';
+            percent80Measured.innerText = Math.round(p80Box.getBoundingClientRect().width) + 'px';
+        }
+
+        function setParentWidth(w) {
+            slider.value = w;
+            updateWidths();
+        }
+
+        slider.addEventListener('input', updateWidths);
+        window.addEventListener('resize', updateWidths);
+        
+        // אתחול ראשוני
+        updateWidths();
+    </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>restaurant</title>
+    </head>
+    <body>
+        <section>
+            <h1>post</h1>
+            <form action="http://localhost:3000/addUser" method="post">
+                <label>
+                    enter your full name:
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="fullname"
+                        required
+                    />
+                </label>
+                <hr />
+                <label>
+                    enter your email:
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="example@gmail.com"
+                        required
+                    />
+                </label>
+                <hr />
+                <label>
+                    enter your password (min 8 chars):
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="********"
+                        required
+                        minlength="8"
+                    />
+                </label>
+                <hr />
+                <label>
+                    enter who you are!
+                    <select name="role">
+                        <option value="admin">admin</option>
+                        <option value="manager">manager</option>
+                        <option value="worker">worker</option>
+                    </select>
+                </label>
+                <button type="submit">submit</button>
+            </form>
+        </section>
+        <hr />
+        <section>
+            <h1>get</h1>
+            <form action="http://localhost:3000/getUser" method="get">
+                <label>
+                    enter your full name:
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="fullname"
+                        required
+                    />
+                </label>
+                <hr />
+                <label>
+                    enter your email:
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="example@gmail.com"
+                        required
+                    />
+                </label>
+                <hr />
+                <label>
+                    enter your password (min 8 chars):
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="********"
+                        required
+                        minlength="8"
+                    />
+                </label>
+                <hr />
+                <label>
+                    enter who you are!
+                    <select name="role">
+                        <option value="admin">admin</option>
+                        <option value="manager">manager</option>
+                        <option value="worker">worker</option>
+                    </select>
+                </label>
+                <button type="submit">submit</button>
+            </form>
+        </section>
+        <hr />
+        <section>
+            <h1>put</h1>
+            <form action="http://localhost:3000/editUser" method="post">
+                <label>
+                    enter your full name:
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="fullname"
+                        required
+                    />
+                </label>
+                <hr />
+                <label>
+                    enter your email:
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="example@gmail.com"
+                        required
+                    />
+                </label>
+                <hr />
+                <label>
+                    enter your password (min 8 chars):
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="********"
+                        required
+                        minlength="8"
+                    />
+                </label>
+                <hr />
+                <label>
+                    enter who you are!
+                    <select name="role">
+                        <option value="admin">admin</option>
+                        <option value="manager">manager</option>
+                        <option value="worker">worker</option>
+                    </select>
+                </label>
+                <button type="submit">submit</button>
+            </form>
+        </section>
+        <hr />
+        <section>
+            <h1>delete</h1>
+            <form action="http://localhost:3000/deleteUser" method="get">
+                <label>
+                    enter your full name:
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="fullname"
+                        required
+                    />
+                </label>
+                <hr />
+                <label>
+                    enter your email:
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="example@gmail.com"
+                        required
+                    />
+                </label>
+                <hr />
+                <label>
+                    enter your password (min 8 chars):
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="********"
+                        required
+                        minlength="8"
+                    />
+                </label>
+                <hr />
+                <label>
+                    enter who you are!
+                    <select name="role">
+                        <option value="admin">admin</option>
+                        <option value="manager">manager</option>
+                        <option value="worker">worker</option>
+                    </select>
+                </label>
+                <button type="submit">submit</button>
+            </form>
+            <hr />
+        </section>
+    </body>
+</html>

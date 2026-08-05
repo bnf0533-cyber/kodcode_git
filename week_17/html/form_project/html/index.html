@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <hr>
+        <h1>POST/contact</h1>
+        <h2>create form</h2>
+        <hr />
+
+        <form action="http://localhost:3000/contact" method="post">
+            <label>
+                enter your name:
+                <input type="text" name="name" required />
+            </label>
+            <hr />
+            <label>
+                enter your email:
+                <input type="email" name="email" required />
+            </label>
+            <hr />
+            <label>
+                enter your choise:
+                <select name="subject">
+                    <option value="bug">bug</option>
+                    <option value="feature">feature</option>
+                    <option value="question">question</option>
+                    <option value="other">other</option>
+                </select>
+            </label>
+            <hr />
+            <label>
+                enter your message:
+                <textarea type="text" name="message" required minlength="10" />
+            </label>
+            <br />
+            <br />
+            <button type="submit">enter to submit</button>
+        </form>
+
+        <br>
+        <hr>
+        <h1>GET/admin</h1>
+        <h2>get all forms</h2>
+        <hr>
+        <form action="http://localhost:3000/admin" method="get">
+            Click here to get all the data: 
+            <br>
+            <br>
+            <button type="submit">getALL</button>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>register</title>
+    </head>
+    <body>
+        <form action="http://localhost:3000/register" method="post">
+            <label>
+                please enter your name:
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="fullname"
+                    minlength="20"
+                    required
+                />
+            </label>
+            <hr />
+            <label>
+                please enter your email:
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="example@group.com/org"
+                    required
+                />
+            </label>
+            <hr />
+            <label>
+                please enter your password:
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="*******"
+                    minlength="10"
+                    required
+                />
+            </label>
+            <hr />
+            <label>
+                please enter your age:
+                <input type="number" name="age" min="10" max="100" required />
+            </label>
+            <hr />
+            <label>
+                <select name="role">
+                    <option value="user">user</option>
+                    <option value="manager">manager</option>
+                </select>
+            </label>
+            <hr />
+            <label>
+                do yo agree the agree?
+                <input type="checkbox" name="agreement" required />
+            </label>
+            <hr />
+            <button type="submit">do yo want to submit?:</button>
+        </form>
+    </body>
+</html>

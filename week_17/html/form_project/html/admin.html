@@ -1,0 +1,33 @@
+// GET /admin — HTML response app.get('/admin', async (req, res) => { const
+contacts = await Contact.find().sort({ createdAt: -1 }); // בנה HTML עם טבלה
+const rows = contacts.map(c => `
+<tr>
+    <td>${c.name}</td>
+    <td>${c.email}</td>
+    <td>${c.subject}</td>
+    <td>${c.message}</td>
+    <td><button onclick="del('${c._id}')">מחק</button></td>
+</tr>
+`).join(''); res.send(`
+<table>
+    <thead>
+        <tr>
+            <th>שם</th>
+            <th>אימייל</th>
+            <th>נושא</th>
+            <th>הודעה</th>
+            <th>פעולות</th>
+        </tr>
+    </thead>
+    <tbody>
+        ${rows}
+    </tbody>
+</table>
+<script>
+    function del(id) {
+        fetch("/contact/" + id, { method: "DELETE" }).then(() =>
+            location.reload()
+        );
+    }
+</script>
+`); });
