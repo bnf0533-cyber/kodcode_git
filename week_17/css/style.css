@@ -1,0 +1,32 @@
+/* html{
+    color: black;
+}
+h1{
+    background-color: silver;
+    display: inline;
+}
+h1:hover{
+    background-color: gold;
+    
+}
+input:focus{
+    border: 2;
+    box-shadow:6px 10px green;
+}
+p:active{
+    border: 5px;
+}
+button:focus-visible{
+    border: 3px solid red;
+}
+li:nth-child(-1){
+    color: rgb(255, 179, 0);
+
+} */
+
+p::after{
+    content: "💖";
+}
+p::before{
+    content: "💖";
+}

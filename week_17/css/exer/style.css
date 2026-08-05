@@ -1,0 +1,22 @@
+.btn {
+    /* בסיס משותף */
+}
+.btn:focus-visible {
+    /* TODO: outline נגיש */
+}
+.btn:active {
+    /* TODO: scale */
+}
+.btn-danger::before {
+    content: ""; /* TODO */
+}
+.btn-loading::after {
+    content: " ";
+    /* TODO: ספינר עם animation */
+}
+.btn:disabled {
+    /* TODO */
+}
+.btn:disabled:hover {
+    /* TODO: ביטול hover */
+}
