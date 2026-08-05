@@ -1,0 +1,21 @@
+:root {
+    --myColor: #091413;
+}
+
+body{
+background-color: var(--myColor);
+}
+nav {
+    background-color: silver;
+    height: 10vh;
+    border: 2px solid var(--myColor);
+}
+main {
+    background-color: red;
+    height: 80vh;
+    border: 1px solid;
+}
+footer {
+    background-color: rgba(255, 0, 0, 0.101);
+    height: 10vh;
+}
