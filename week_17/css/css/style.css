@@ -1,21 +1,29 @@
 :root {
-    --myColor: #091413;
+    --myColor: #36afa77c;
+    --secondColor: #92eeff;
 }
 
-body{
-background-color: var(--myColor);
+body {
+    background-color: var(--myColor);
 }
 nav {
-    background-color: silver;
-    height: 10vh;
+    background-color: rgba(227, 226, 235, 0.471);
+    height: 5%;
     border: 2px solid var(--myColor);
 }
 main {
-    background-color: red;
-    height: 80vh;
-    border: 1px solid;
+    background-color: var(--secondColor);
+    border: 1% solid;
+}
+.main-of-p {
+    font-size: 20px;
 }
 footer {
-    background-color: rgba(255, 0, 0, 0.101);
-    height: 10vh;
+    background-color: greenyellow;
+    height: 9%;
+    margin-top: 50%;
+}
+.button {
+    height: 30%;
+    inline-size: 20%;
 }

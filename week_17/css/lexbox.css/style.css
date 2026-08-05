@@ -1,0 +1,32 @@
+
+.card_main_flax{
+    background-color: cadetblue;
+    display: flex;
+    justify-content:space-around;
+    align-items: end;
+    flex-direction: column;
+    height: 10vh;
+    border-radius: 10px;
+    flex-wrap: wrap;
+}
+.text_main_flax{
+    background-color: black;
+    color: white;
+    border:solid 5px green ;
+    width: 100px;
+    height: 100px;
+    flex: 1;
+}
+.card_crose_flex{
+    background-color: burlywood;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: end;
+}
+.p_crose_flex{
+    background-color: aquamarine;
+    
+
+}
