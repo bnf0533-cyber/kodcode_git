@@ -1,0 +1,22 @@
+div{
+    height: 150px;
+}
+
+.d-1{
+    background-color: aqua;
+    overflow: auto;
+    border: solid 2px;
+}
+.d-2{
+    background-color: rgb(255, 55, 0);
+    overflow: hidden;
+    border: solid 2px;
+}
+.d-3{
+    background-color: rgb(204, 23, 131);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: solid 2px;    
+    height: auto;
+}

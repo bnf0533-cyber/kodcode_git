@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.box-a{
+    background-color: lightblue;
+    position: static;
+}
+.box-b{
+    background-color: lightcoral;
+    position: relative;
+    height: 200px;
+
+}
+.box-g{
+    background-color: lightgreen;
+}
+.childe{
+    background-color: lightslategray;
+    position: absolute;
+}
+.tall{
+    height: 200px;
+    background-color: lightgray;
+}
+.banner{
+    background-color: lightsalmon;
+}
