@@ -1,0 +1,190 @@
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+    margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        interpolate-size: allow-keywords;
+    }
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    /* 4. Increase line-height */
+    line-height: 1.5;
+    /* 5. Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+    text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+/*10. Create a root stacking context */
+#root,
+#__next {
+    isolation: isolate;
+}
+
+:root {
+    --colorMain: rgba(40, 42, 53);
+    --green_button: #04aa6d;
+    --green_button_hover: #059862;
+    --header_bg: white; /* רקע התפריט הלבן */
+}
+
+/* תמונה */
+img {
+    width: 60px;
+}
+
+/* זה כל הנב */
+
+.main_nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px;
+    height: 70px;
+}
+
+.left_nav {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+}
+
+.right_nav {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+}
+
+/* קבוצת כפתורים ימין */
+.right_button {
+    display: flex;
+    height: 50px;
+    background-color: transparent;
+}
+
+/* קבוצת כפתורים שמאל */
+.left_button {
+    display: flex;
+    height: 50px;
+}
+
+/*כפתור בודד שמאל  */
+.left_butt {
+    background-color: transparent;
+    border: none;
+    padding: 0 8px;
+    font-size: 16px;
+}
+/*מעבר מעל כל כפתור בודד */
+.left_butt:hover {
+    background-color: var(--green_button_hover);
+    cursor: pointer;
+    color: white;
+}
+
+/* כפתור בודד ימין */
+.right_butt {
+    background-color: transparent;
+    border: none;
+    padding: 0 8px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+/*מעבר מעל כל כפתור בודד */
+.right_butt:hover {
+    background-color: #cccccc;
+    color: black;
+    border-radius: 25px;
+    cursor: pointer;
+}
+.sign_in {
+    background-color: var(--green_button);
+    display: flex;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search_box {
+    display: flex;
+    border-color: var(--green_button);
+    border: 1px solid #cccccc;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    padding: 2px 15px;
+}
+.search_box:focus-within {
+    border: 2px solid var(--green_button);
+}
+.search {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+.search_box i {
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="style.css" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>w3school</title>
+    </head>
+    <body>
+        <!-- החלק העליון (Header): ב-CSS אנחנו נשתמש פה ב-Flexbox עם justify-content: space-between כדי להפריד את צד שמאל מצד ימין -->
+        <header class="global_nav">
+            
+            <!-- קבוצה שמאלית: עטפנו את הלוגו והכפתורים בקופסה אחת (div) כדי שישארו תמיד ביחד בצד שמאל -->
+            <div class="nav_left">
+                <!-- הלוגו -->
+                <div class="logo_container">
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV_aQF0y12ajQNMLSJ-Klu0DixxXZrlFWnIiGCJV10pg&s=10"
+                        alt="picture of w3school"
+                        class="image"
+                    />
+                </div>
+
+                <!-- תפריט הניווט הראשי -->
+                <nav class="all_button">
+                    <button class="nav_button">Tutorials ▾</button>
+                    <button class="nav_button">References ▾</button>
+                    <button class="nav_button">Exercises ▾</button>
+                    <button class="nav_button">Certificates ▾</button>
+                </nav>
+            </div>
+
+            <!-- קבוצה ימנית: עטפנו את החיפוש וההתחברות בקופסה אחת כדי שישארו ביחד בצד ימין -->
+            <div class="nav_right">
+                
+                <!-- שורת החיפוש: עטפנו את ה-input והאייקון יחד. ב-CSS נהפוך את ה-div הזה ל-Flex כדי שהאייקון יֵשֵב ממש בתוך המסגרת של החיפוש -->
+                <div class="search_container">
+                    <input type="text" placeholder="Search..." class="search_input" />
+                    <span class="search_icon">🔍</span>
+                </div>
+
+                <!-- כפתורי פעולה משניים -->
+                <div class="user_actions">
+                    <button class="nav_button" style="font-weight: bold; font-size: 20px;">⋮</button>
+                    <button class="nav_button">Upgrade</button>
+                    <button class="nav_button">Academy</button>
+                    <button class="nav_button">Spaces</button>
+                    <button class="nav_button">Practice</button>
+                    <button class="nav_button green_pill">Sign In</button> <!-- הוספנו מחלקה green_pill כדי להפוך אותו לירוק ועגול -->
+                </div>
+            </div>
+        </header>
+
+        <!-- התפריט המשני השחור. ב-CSS נשתמש ב-space-between כדי לפזר את כל השפות האלו לאורך כלללל הדף -->
+        <nav class="secondary_nav">
+            <a href="#">&lt;</a>
+            <a href="#">CSS</a>
+            <a href="#">JAVASCRIPT</a>
+            <a href="#">SQL</a>
+            <a href="#">PYTHON</a>
+            <a href="#">JAVA</a>
+            <a href="#">PHP</a>
+            <a href="#">W3.CSS</a>
+            <a href="#">C</a>
+            <a href="#">C++</a>
+            <a href="#">C#</a>
+            <a href="#">HOW TO</a>
+            <a href="#">BOOTSTRAP</a>
+            <a href="#">REACT</a>
+            <a href="#">MYSQL</a>
+            <a href="#">JQUERY</a>
+            <a href="#">&gt;</a>
+        </nav>
+
+        <!-- האזור המרכזי של האתר: גם פה נשתמש ב-Flexbox ב-CSS כדי לחלק אותו לעמודה שמאלית (טקסט) וימנית (כרטיסיה) -->
+        <main class="main_content">
+            
+            <!-- עמודה שמאלית: מכילה את כל הטקסטים והרשימות -->
+            <div class="main_left">
+                <h1 class="main_title">Learn to Code</h1>
+                <p class="main_subtitle">Free tutorials, examples and references.</p>
+                <p class="yellow_text">No sign-up needed, just start learning.</p>
+                
+                <p class="premium_text">Or sign up to unlock premium features:</p>
+                
+                <!-- רשימת היתרונות (עם סימוני ה-V). חילקנו אותה לשתי עמודות, שוב, בעזרת תכונות Flexbox ב-CSS -->
+                <div class="features_list">
+                    <!-- עמודת יתרונות ראשונה -->
+                    <div class="features_col">
+                        <span><span class="green_check">✓</span> Progress tracking</span>
+                        <span><span class="green_check">✓</span> Ad-free learning</span>
+                        <span><span class="green_check">✓</span> Practice problems</span>
+                        <span><span class="green_check">✓</span> Challenges</span>
+                    </div>
+                    <!-- עמודת יתרונות שנייה -->
+                    <div class="features_col">
+                        <span><span class="green_check">✓</span> Build & host websites</span>
+                        <span><span class="green_check">✓</span> XP & Streaks</span>
+                        <span><span class="green_check">✓</span> Leagues</span>
+                        <span><span class="green_check">✓</span> Avatar</span>
+                    </div>
+                </div>
+                <p class="member_text">Already a member? <a href="#" class="green_link">Sign in</a></p>
+            </div>
+
+            <!-- עמודה ימנית: כרטיס המשתמש -->
+            <div class="main_right">
+                
+                <!-- בנינו כאן 'כרטיסיה' שחורה בעזרת Box Model (שמנו Padding פנימי, ו-Border-radius כדי לעגל פינות) -->
+                <div class="user_card">
+                    <div class="card_header">
+                        <span class="card_lock">🔒</span>
+                    </div>
+                    <div class="card_score">
+                        <span class="yellow_bolt">⚡</span>
+                        <span class="score_num">12,560</span>
+                    </div>
+                    <p class="card_title">Keep learning. Keep leveling up.</p>
+                    <p class="card_subtitle">Track your progress and achieve more.</p>
+                    
+                    <hr class="card_divider" />
+                    
+                    <div class="card_stats">
+                        <div class="stat_col">
+                            <span class="stat_title">XP this week</span>
+                            <span class="stat_val">850</span>
+                        </div>
+                        <div class="stat_divider"></div>
+                        <div class="stat_col">
+                            <span class="fire_icon">🔥</span>
+                            <span class="stat_title">7</span>
+                            <span class="stat_subtitle">Day streak</span>
+                        </div>
+                    </div>
+                    
+                    <button class="card_sign_in">Sign in</button>
+                    
+                    <!-- הנקודות למטה: פשוט עיגלנו 6 דיבים קטנים ל-50% כדי ליצור עיגול (Border-radius) -->
+                    <div class="card_dots">
+                        <span class="dot"></span>
+                        <span class="dot active"></span> <!-- קלאס active צובע את הנקודה הזו בירוק ב-CSS -->
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer></footer>
+    </body>
+</html>

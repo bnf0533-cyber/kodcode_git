@@ -1,0 +1,427 @@
+/* 1. מודל הקופסה (Box Sizing): דואג שפדינג וגבולות לא יגדילו את הגודל של הקופסה */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* 2. איפוס שוליים (Margin): מוחק שוליים שמגיעים כברירת מחדל מהדפדפן */
+*:not(dialog) {
+    margin: 0;
+}
+
+/* 3. מאפשר אנימציות - מתקדם יותר, לא נגענו בזה כרגע */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        interpolate-size: allow-keywords;
+    }
+}
+
+body {
+    /* 4. מגדיל קצת את המרווח בין השורות לקריאה נוחה */
+    line-height: 1.5;
+    /* 5. החלקת גופנים שייראו יפה יותר */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 6. מונע מתמונות ווידאו לחרוג מהגודל המקורי שלהם */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* 7. אלמנטים כמו כפתורים יורשים את הפונט של הדף */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* 8. מונע מטקסטים ארוכים לגלוש החוצה מהקופסה */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* 9. שיפור חיתוך שורות */
+p {
+    text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+/* 10. יוצר הקשר שכבות נקי */
+#root,
+#__next {
+    isolation: isolate;
+}
+
+/* --- כאן מתחיל הקוד שאנחנו כתבנו ביחד --- */
+
+/* הגדרת משתנים. כאן שמרנו את הצבעים כדי שנוכל להשתמש בהם שוב ושוב בלי לזכור את הקוד שלהם */
+:root {
+    --colorMain: rgba(40, 42, 53);
+    --green_button: #04AA6D; /* הירוק של W3Schools */
+    --green_button_hover: #059862; /* צבע ירוק קצת יותר כהה כשמעבירים עליו את העכבר */
+    --header_bg: white; /* רקע התפריט הלבן */
+}
+
+/* עיצוב התפריט העליון הראשי */
+.global_nav {
+    background-color: var(--header_bg);
+    
+    /* בעזרת Flexbox, אנחנו לוקחים את 'צד שמאל' ו'צד ימין' ומרחיקים אותם לקצוות */
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; /* ממרכז את הכל אנכית */
+    
+    /* ריווח פנימי (Box Model): 0 למעלה/למטה, 16px בצדדים כדי שלא יידבק לקצה המסך */
+    padding: 0 16px; 
+    height: 70px; /* גובה קבוע */
+}
+
+/* מקבצים את החלקים השונים להיות Flex בעצמם כדי שהאלמנטים בתוכם יעמדו בשורה */
+.nav_left, .nav_right, .all_button, .user_actions {
+    display: flex;
+    align-items: center; /* מרכוז אנכי */
+    height: 100%;
+}
+
+.logo_container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-right: 16px; /* ריווח חיצוני מצד ימין כדי להרחיק את הכפתורים מהלוגו */
+}
+
+.image {
+    width: 60px; /* רוחב קבוע ללוגו */
+}
+
+/* עיצוב כפתורי הניווט הכלליים (Tutorials, References וכו') */
+.nav_button {
+    background-color: transparent; /* רקע שקוף למראה נקי */
+    border: none; /* הסרת הגבול המכוער של הכפתור המקורי */
+    color: black;
+    padding: 0 20px; /* ריווח פנימי ימינה ושמאלה כדי שהכפתור יהיה רחב ונוח ללחיצה */
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer; /* הופך את העכבר ליד 👆 כשמרחפים */
+    height: 100%;
+}
+
+/* פסאודו-סלקטור: מה קורה כשמעבירים את העכבר מעל כפתור */
+.nav_button:hover {
+    background-color: var(--green_button); /* משנה את הרקע לירוק (מהמשתנה) */
+    color: white; /* טקסט לבן */
+}
+
+/* עיצוב תיבת החיפוש החכמה - בנינו אותה מקופסה (Container) שמכילה אינפוט ואייקון */
+.search_container {
+    display: flex; /* מסדר את תיבת הטקסט וזכוכית המגדלת באותה שורה */
+    align-items: center;
+    border: 1px solid #ccc; /* מסגרת אפורה עדינה */
+    border-radius: 25px; /* מעגל את הפינות ליצירת צורת 'כדור/גלולה' */
+    padding: 5px 15px; /* Box Model: ריווח פנימי עדין */
+    margin-right: 16px; /* מרחיק את התיבה מהכפתורים שמימינה */
+}
+
+/* תיבת הטקסט עצמה של החיפוש */
+.search_input {
+    border: none; /* אנחנו לא צריכים גבול כי ל-Container כבר יש גבול */
+    outline: none; /* מעלים את המסגרת הכחולה שמופיעה כשלחוצים */
+    padding: 5px;
+    width: 150px;
+}
+
+/* אייקון זכוכית המגדלת */
+.search_icon {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* עיצוב כפתורים ירוקים מיוחדים (כמו Sign in) */
+.green_pill {
+    background-color: var(--green_button); /* משתמש בצבע הירוק */
+    color: white;
+    border-radius: 25px; /* פינות מעוגלות מאוד */
+    padding: 10px 24px;
+    margin-left: 10px;
+    height: auto; 
+}
+
+/* כשמרחפים על הכפתור הירוק, הוא הופך לירוק כהה יותר */
+.green_pill:hover {
+    background-color: var(--green_button_hover);
+}
+
+/* --- התפריט המשני השחור --- */
+.secondary_nav {
+    display: flex; /* מסדר את השפות בשורה */
+    background-color: #282A35;
+    padding: 10px 20px;
+    justify-content: space-between; /* הסוד! מפזר את כל השפות כך שיתפסו את כלללל הרוחב של הדף */
+    align-items: center;
+    overflow-x: auto; /* מאפשר לגלול לצדדים אם המסך קטן מדי */
+}
+
+.secondary_nav a {
+    color: white;
+    text-decoration: none; /* מבטל את הקו התחתון שיש לקישורים בדרך כלל */
+    font-size: 15px;
+    white-space: nowrap; /* מונע מהמילים להישבר לשורה חדשה */
+}
+
+/* כשמרחפים על שפה בתפריט השחור - היא הופכת לירוקה */
+.secondary_nav a:hover {
+    color: var(--green_button);
+}
+
+/* --- אזור התוכן המרכזי (החלק הכהה) --- */
+.main_content {
+    background-color: #282A35;
+    color: white;
+    
+    display: flex; /* הופך את ה-Main לעמודה ימנית ושמאלית */
+    justify-content: center; /* ממרכז את הכל באמצע הדף */
+    align-items: center;
+    
+    padding: 60px 40px;
+    gap: 80px; /* יוצר רווח גדול בין צד ימין (הכרטיסיה) לצד שמאל (הטקסט) */
+    min-height: 80vh;
+}
+
+/* --- עמודה שמאלית (טקסטים ורשימות) --- */
+.main_left {
+    display: flex;
+    flex-direction: column; /* מסדר את הטקסטים אחד מתחת לשני */
+    max-width: 500px;
+}
+
+.main_title {
+    font-size: 60px;
+    margin-bottom: 10px; /* רווח תחתון שמפריד מהכותרת משנה */
+    font-weight: bold;
+}
+
+.main_subtitle {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.yellow_text {
+    color: #FFF04C; /* טקסט בצבע צהוב זורח */
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.premium_text {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* רשימת היתרונות (מחולקת לשתי עמודות) */
+.features_list {
+    display: flex; /* מחלק את הרשימה לשתי עמודות (שני קולומים) */
+    gap: 40px; /* רווח בין העמודה הימנית לשמאלית */
+    margin-bottom: 30px;
+}
+
+.features_col {
+    display: flex;
+    flex-direction: column; /* מסדר את ה-V אחד מתחת לשני */
+    gap: 10px;
+}
+
+/* עיצוב סימון ה-V הירוק */
+.green_check {
+    color: var(--green_button);
+    margin-right: 8px; /* מרחיק קצת את ה-V מהמילה עצמה */
+    font-weight: bold;
+}
+
+.member_text {
+    font-size: 16px;
+}
+
+.green_link {
+    color: var(--green_button);
+    text-decoration: none;
+}
+
+.green_link:hover {
+    color: var(--green_button_hover);
+}
+
+/* --- עמודה ימנית (כרטיסיית המשתמש) --- */
+.user_card {
+    background-color: #22242D; /* רקע קצת שונה משאר העמוד כדי להבליט את הכרטיס */
+    border-radius: 15px; /* Box Model: מעגל את הפינות */
+    padding: 30px;
+    width: 380px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* צל עדין שמקפיץ את הקופסה למעלה */
+}
+
+/* האזור למעלה בכרטיסייה (המנעול) */
+.card_header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* דוחף את המנעול ימינה עד הסוף */
+}
+
+.card_lock {
+    color: #888;
+    background-color: #333;
+    border-radius: 50%; /* 50% הופך מלבן/ריבוע לעיגול מושלם */
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+/* אזור הניקוד (12,560) */
+.card_score {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* רווח בין הברק למספר */
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.yellow_bolt {
+    color: #FFF04C;
+    font-size: 30px;
+}
+
+.score_num {
+    color: var(--green_button);
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.card_title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.card_subtitle {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+/* קו מפריד */
+.card_divider {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #444; /* מייצר קו עדין אחד בלבד בחלק העליון */
+    margin-bottom: 20px;
+}
+
+/* אזור הסטטיסטיקות (אש ו-XP) */
+.card_stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 30px; /* מרחיק את צד ימין מצד שמאל */
+    margin-bottom: 30px;
+}
+
+.stat_col {
+    display: flex;
+    flex-direction: column; /* מסדר את האייקון והטקסט אחד מעל השני */
+    align-items: center;
+    gap: 5px;
+}
+
+/* פס הפרדה אנכי בין הסטטיסטיקות */
+.stat_divider {
+    width: 1px;
+    height: 40px;
+    background-color: #444;
+}
+
+.stat_title {
+    font-size: 12px;
+    color: #ccc;
+}
+
+.stat_val {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.stat_subtitle {
+    font-size: 12px;
+    color: #ccc;
+}
+
+/* כפתור ההתחברות בכרטיסייה */
+.card_sign_in {
+    background-color: var(--green_button);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.card_sign_in:hover {
+    background-color: var(--green_button_hover);
+}
+
+/* הנקודות בתחתית הכרטיסייה שמייצגות סליידר */
+.card_dots {
+    display: flex;
+    gap: 8px; /* רווח קטן בין כל נקודה */
+}
+
+/* כל נקודה בנפרד (מעוגלת לחלוטין) */
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%; 
+    background-color: #555;
+}
+
+/* הנקודה המודגשת הנוכחית - היא רחבה יותר וצבעה ירוק */
+.dot.active {
+    background-color: var(--green_button);
+    width: 24px;
+    border-radius: 4px; /* רק קצוות מעוגלים כדי שזה יראה כמו גלולה קטנה */
+}
+
+footer {
+    background-color: #282A35;
+    height: 10vh;
+}
