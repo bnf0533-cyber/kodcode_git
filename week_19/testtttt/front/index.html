@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script defer src="index.js"></script>
+        <link rel="stylesheet" href="index.css" />
+    </head>
+
+    <body>
+        <button id="fetch-btn">fetch data</button>
+        <section id="parent-section">
+            <form action="http://localhost:3000/items" method="post">
+                <textarea rows="10" name="items" id="items"></textarea>
+                <button id="submit" type="submit">send</button>
+            </form>
+        </section>
+    </body>
+</html>
