@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="newComplints.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=error"
+        />
+        <title>newComplints</title>
+    </head>
+    <script type="module" src="script.js"></script>
+    <body>
+        <div class="grid-container">
+            <nav>
+                <div class="main-nav">
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJ1jaflCtMmXNysn4yzXqIIU-31ZoZtsm2Gqg50X0wZtLD2-R2QWdIFLo&s=10"
+                        alt="logo"
+                    />
+                    <div class="logo-config">
+                        <h2 class="logo-h2">הביטוח הלאומי</h2>
+                        <p class="logo-text">
+                            🤣לצידך ברגעים החשובים של החיים🤣
+                        </p>
+                    </div>
+                    <p class="nav-text">השירות המקומי שלך</p>
+                </div>
+                <div class="bottom-nav">
+                    <div class="bottom-links">
+                        <a href="./complints.html" class="bottom-link"
+                            >יומן תלונות</a
+                        >
+                        <a
+                            id="current-page"
+                            href="./newComplints.html"
+                            class="bottom-link"
+                            >הגשת תלונה חדשה</a
+                        >
+                    </div>
+                </div>
+            </nav>
+            <main class="main-container">
+                <div class="main-top">
+                    <div class="right-top">
+                        <p class="p-text">פנייה חדשה</p>
+                        <h1 class="h1-main">הגשת תלונה</h1>
+                    </div>
+                    <div class="left-top">
+                        <a class="main-link" href="complints.html"
+                            >חזרה ליומן</a
+                        >
+                    </div>
+                </div>
+                <div class="main-important">
+                    <h3 class="important-h3">
+                        <span class="material-symbols-outlined"> error </span>
+                        המידע נשאר אצלך
+                    </h3>
+                    <p class="important-p">
+                        הטופס נשמר בדפדפן בלבד ואינו מועבר לביטוח לאומי
+                    </p>
+                </div>
+                <div class="main-cards">
+                    <div class="nav-card">
+                        <div class="right-nav-card">
+                            <p class="p-nav-card">פרטי הפנייה</p>
+                            <h3>מילוי תופס תלונה</h3>
+                        </div>
+                        <div class="left-nav-card">
+                            <p>*שדות חובה</p>
+                        </div>
+                    </div>
+                    <div class="inputs">
+                        שם המתלונן/ת*
+                        <input class="name" type="text" />
+                        <div class="selectors">
+                            <label for="subject"
+                                ><p class="p-sub">נושא התלונה</p><select
+                                    name="subject"
+                                    class="select-one"
+                                >
+                                    <option value="time">
+                                        זמן המתנה בטלפון
+                                    </option>
+                                    <option value="delayInPay">
+                                        עיכוב בתשלום
+                                    </option>
+                                    <option value="handlingRequest">
+                                        טיפול בפנייה
+                                    </option>
+                                    <option value="website">
+                                        אתר ואפליקציה
+                                    </option>
+                                    <option value="service">שירות בסניף</option>
+                                    <option value="other">אחר</option>
+                                </select>
+                            </label>
+                            <label for="urgency">
+                                <p class="urg">רמת דחיפות</p>
+                                <select name="urgency" class="select-tow">
+                                    <option value="normal">סבבה</option>
+                                    <option value="urgency">דחוף</option>
+                                    <option value="very-urgency">
+                                        ממש דחוף
+                                    </option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="distraction">
+                            <p class="title-text-area">*תיאור תלונה</p>
+                            <textarea
+                                name="text"
+                                class="text-dis"
+                                placeholder="כתבו כאן את פרטי התלונה"
+                            ></textarea>
+                            <p>מומלץ לציין מה קרה ומתי.</p>
+                        </div>
+                    </div>
+                    <button type="submit">שליחת התלונה</button>
+                    <button type="reset" >ביטול וחזרה</button>
+                </div>
+            </main>
+            <footer>
+                <div class="footer-content">
+                    <img
+                        class="footer-logo"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJ1jaflCtMmXNysn4yzXqIIU-31ZoZtsm2Gqg50X0wZtLD2-R2QWdIFLo&s=10"
+                        alt="logo"
+                    />
+                    <p class="footer-p">ביטוח לאומי תמיד כאן בשבילכם</p>
+                    <a href="complints.html" class="footer-link"
+                        >יומן התלונות</a
+                    >
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

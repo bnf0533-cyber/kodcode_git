@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=error"
+        />
+        <link rel="stylesheet" href="complints.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <title>complints</title>
+    </head>
+    <script type="module" src="script.js"></script>
+    <body>
+        <div class="grid-container">
+            <nav>
+                <div class="main-nav">
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJ1jaflCtMmXNysn4yzXqIIU-31ZoZtsm2Gqg50X0wZtLD2-R2QWdIFLo&s=10"
+                        alt="logo"
+                    />
+                    <div class="logo-config">
+                        <h2 class="logo-h2">הביטוח הלאומי</h2>
+                        <p class="logo-text">
+                            🤣לצידך ברגעים החשובים של החיים🤣
+                        </p>
+                    </div>
+                    <p class="nav-text">השירות המקומי שלך</p>
+                </div>
+                <div class="bottom-nav">
+                    <div class="bottom-links">
+                        <a
+                            id="current-page"
+                            href="./complints.html"
+                            class="bottom-link"
+                            >יומן תלונות</a
+                        >
+                        <a href="./newComplints.html" class="bottom-link"
+                            >הגשת תלונה חדשה</a
+                        >
+                    </div>
+                </div>
+            </nav>
+            <main>
+                <div class="main-grid">
+                    <div class="main-top">
+                        <div class="right-top">
+                            <p class="p-text">שירות אישי</p>
+                            <h1 class="h1-main">יומן תלונות אזרחים</h1>
+                            <h3 class="h3-main">
+                                ביטוח לאומי לצידך ברגעים החשובים של החיים
+                            </h3>
+                        </div>
+                        <div class="left-top">
+                            <a class="main-link" href="newComplints.html"
+                                >הגשת תלונה חדשה</a
+                            >
+                        </div>
+                    </div>
+                    <div class="main-important">
+                        <h3 class="important-h3">
+                            <span class="material-symbols-outlined">
+                                error
+                            </span>
+                            חשוב לדעת
+                        </h3>
+                        <p class="important-p">
+                            התלונות נשמרות במכשיר הזה בלבד ואינן נשלחות לביטוח
+                            לאומי או לכל גורם אחר
+                        </p>
+                    </div>
+                    <div class="main-middle">
+                        <div class="cards">
+                            <div class="card">
+                                <span id="total" class="card-num">0</span>
+                                <p class="card-p">תלונות שנרשמו</p>
+                            </div>
+                            <div class="card">
+                                <span id="users" class="card-num">0</span>
+                                <p class="card-p">מתלוננים</p>
+                            </div>
+                            <div class="card">
+                                <span id="closed" class="card-num">0</span>
+                                <p class="card-p">תלונות שטופלו</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-bottom">
+                        <div class="bottom-grid">
+                            <div class="bottom-up">
+                                <div class="up-right">
+                                    <p class="p-bottom">ריכוז פניות</p>
+                                    <h3 class="h2-bottom">התלונות שלי</h3>
+                                </div>
+                                <div class="up-left">
+                                    <button class="reset-button" type="reset">
+                                        איפוס יומן
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bottom-down">
+                                <svg
+                                    class="table-icon"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    height="50px"
+                                    viewBox="0 -960 960 960"
+                                    width="50px"
+                                    fill="rgb(74 125 186)"
+                                >
+                                    <path
+                                        d="M760-360v-80H200v80h560Zm0-160v-80H200v80h560Zm0-160v-80H200v80h560ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm560-80v-80H200v80h560Z"
+                                    />
+                                </svg>
+                                <h2>עדיין לא נרשמו תלונות</h2>
+                                <p>
+                                    כשתגישו תלונה היא תופיעה כאן ותשמר בדפדפן
+                                    הזה
+                                </p>
+                                <a class="bottom-down-link" href="./newComplints.html"
+                                    >הגשת תלונה ראשונה</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer>
+                <div class="footer-content">
+                    <img
+                        class="footer-logo"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJ1jaflCtMmXNysn4yzXqIIU-31ZoZtsm2Gqg50X0wZtLD2-R2QWdIFLo&s=10"
+                        alt="logo"
+                    />
+                    <p class="footer-p">ביטוח לאומי תמיד כאן בשבילכם</p>
+                    <a href="./newComplints.html" class="footer-link"
+                        >הגשת תלונה</a
+                    >
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
