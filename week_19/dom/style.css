@@ -1,0 +1,13 @@
+#parent{
+    background-color:aqua ;
+}
+
+.selected {
+    background-color: yellow;
+}
+
+.btn-add{
+    background-color: beige;
+    width: 200px;
+    height: 50px;
+}
