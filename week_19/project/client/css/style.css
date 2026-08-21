@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #222;
+}
+
+.page {
+  max-width: 520px;
+  margin: 60px auto;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  margin-bottom: 24px;
+  padding: 8px 16px;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.stats p {
+  margin-bottom: 8px;
+}
+
+.add-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.add-form input {
+  flex: 1;
+  padding: 8px;
+}
+
+.add-form button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.task-list {
+  list-style: none;
+  border-top: 1px solid #ddd;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.task-item span {
+  flex: 1;
+}
+
+.task-item.completed span {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.task-item button {
+  padding: 4px 10px;
+  cursor: pointer;
+}
