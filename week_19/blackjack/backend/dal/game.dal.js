@@ -43,10 +43,12 @@ const getRandomCard = () => ({
 export async function createRound(bet, playerId) {
     const chips = await getPlayerById(playerId);
     if (!chips) {
-        return "player not found";
+        throw new Error("player not found");
     }
+    const exist = await checkProgress(playerId);
+    if (exist) throw new Error("active round exist");
     if (!bet || bet < 0 || bet > chips.chips) {
-        return "invalid chips";
+        throw new Error("invalid chips");
     }
     await connectPlayer.updateOne(
         { _id: new ObjectId(playerId) },
@@ -64,7 +66,12 @@ export async function createRound(bet, playerId) {
         createdAt: new Date(),
     };
     const res = await connectGame.insertOne(round);
-    return { id: res.insertedId.toString(), ...round };
+    return {
+        roundId: res.insertedId.toString(),
+        playerCards: round.playerCards,
+        dealerUpCard: round.dealerCards[0],
+        chips: chips.chips - bet
+    };
 }
 
 export async function getPlayerById(id) {
@@ -80,30 +87,16 @@ export async function addCardToPlayer(playerId) {
     if (!game) throw new Error("invalid progress");
     const card = getRandomCard();
     game.playerCards.push(card);
-    const total = await game.playerCards.reduce((sum, item) => {
-        if (item.rank === "K" || item.rank === "Q" || item.rank === "J") {
-            item.rank = 10;
-        }
-        if (item.rank === "A") {
-            if (sum > 21) {
-                item.rank = 1;
-            } else item.rank = 11;
-        }
-        return (sum += Number(item.rank));
-    }, 0);
-    game.total = total;
+    const total = sumCard(game.playerCards);
     if (total > 21) {
         game.status = "player_bust";
-    }
-    if (total === 21) {
-        game.status = "player_win";
     }
     await connectGame.updateOne(
         { _id: game._id },
         {
             $set: {
                 playerCards: game.playerCards,
-                total: await total,
+                total: total,
                 status: game.status,
             },
         }
@@ -111,18 +104,24 @@ export async function addCardToPlayer(playerId) {
     return game;
 }
 
-export function sumCard(card) {
-    return card.reduce((sum, item) => {
-        if (item.rank === "K" || item.rank === "Q" || item.rank === "J") {
-            item.rank = 10;
+export function sumCard(cards) {
+    let sum = 0;
+    let acesCount = 0;
+    for (const card of cards) {
+        if (card.rank === "K" || card.rank === "Q" || card.rank === "J") {
+            sum += 10;
+        } else if (card.rank === "A") {
+            acesCount += 1;
+            sum += 11;
+        } else {
+            sum += Number(card.rank);
         }
-        if (item.rank === "A") {
-            if (sum > 21) {
-                item.rank = 1;
-            } else item.rank = 11;
-        }
-        return (sum += Number(item.rank));
-    }, 0);
+    }
+    while (sum > 21 && acesCount > 0) {
+        sum -= 10;
+        acesCount -= 1;
+    }
+    return sum;
 }
 export async function updateChipsPlayer(playerId, sum) {
     await connectPlayer.updateOne(
@@ -139,18 +138,6 @@ export async function playerStand(playerId) {
         const card = getRandomCard();
         game.dealerCards.push(card);
         total = sumCard(game.dealerCards);
-    }
-    if (total < 17) {
-        await connectGame.updateOne(
-            { _id: game._id },
-            {
-                $set: {
-                    dealerCards: game.dealerCards,
-                    total: await total,
-                    status: game.status,
-                },
-            }
-        );
     }
     const totalPlayer = sumCard(game.playerCards);
     if (total > 21) {
