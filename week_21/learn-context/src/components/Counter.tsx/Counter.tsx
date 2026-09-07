@@ -1,4 +1,3 @@
-import React from "react";
 import { userStore } from "../../store/userStore";
 
 export default function Counter() {
